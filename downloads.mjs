@@ -4,7 +4,8 @@ export const PLATFORMS = [
   { id: 'windows-x64', label: 'Windows', suffix: 'windows-x64.zip' },
   { id: 'linux-x64', label: 'Linux', suffix: 'linux-x64.tar.gz' },
   { id: 'macos-arm64', label: 'Mac · Apple Silicon', suffix: 'macos-arm64.tar.gz' },
-  { id: 'macos-x64', label: 'Mac · Intel', suffix: 'macos-x64.tar.gz' }
+  { id: 'macos-x64', label: 'Mac · Intel', suffix: 'macos-x64.tar.gz' },
+  { id: 'rg35xx-pro-aarch64', label: 'RG35XX Pro', suffix: 'rg35xx-pro-aarch64.zip' }
 ];
 
 // Only offer matching runtime archives from our public repository.
