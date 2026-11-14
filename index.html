@@ -13,17 +13,38 @@
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="downloads.mjs"></script>
+  <script type="module" src="gallery.mjs"></script>
 </head>
 <body>
+  <header class="hero">
+    <h1 class="logo"><img src="assets/logo.png" alt="Whiskerwild" width="1983" height="793" fetchpriority="high"></h1>
+  </header>
   <main class="page">
-    <h1 class="logo"><img src="assets/logo.png" alt="Whiskerwild" width="1984" height="800" fetchpriority="high"></h1>
 
     <div class="gallery" role="group" aria-label="Screenshots">
-      <a href="assets/adventure.png" target="_blank" rel="noopener" aria-label="View the forest screenshot at full size (opens in a new tab)">
+      <a href="assets/adventure.png" aria-label="Enlarge Glowing mushroom forest">
         <img src="assets/adventure.png" alt="A little warrior cat in a glowing mushroom forest" width="960" height="720">
+        <span>Glowing mushroom forest</span>
       </a>
-      <a href="assets/islands.png" target="_blank" rel="noopener" aria-label="View the island screenshot at full size (opens in a new tab)">
+      <a href="assets/islands.png" aria-label="Enlarge Autumn islands">
         <img src="assets/islands.png" alt="An island of autumn trees, ruins, and golden crystals surrounded by sea" width="960" height="720">
+        <span>Autumn islands</span>
+      </a>
+      <a href="assets/village.png" aria-label="Enlarge A village by the sea">
+        <img src="assets/village.png" alt="The cat village with cottages and trees beside the sea" width="1280" height="720" loading="lazy">
+        <span>A village by the sea</span>
+      </a>
+      <a href="assets/winter.png" aria-label="Enlarge Snow-covered shores">
+        <img src="assets/winter.png" alt="Snow-covered fir trees and golden crystals on a winter island" width="320" height="240" loading="lazy">
+        <span>Snow-covered shores</span>
+      </a>
+      <a href="assets/volcanic.png" aria-label="Enlarge Volcanic ruins">
+        <img src="assets/volcanic.png" alt="Glowing lava, dark trees, and ancient ruins on a volcanic island" width="320" height="240" loading="lazy">
+        <span>Volcanic ruins</span>
+      </a>
+      <a href="assets/fishing.png" aria-label="Enlarge A little time for fishing">
+        <img src="assets/fishing.png" alt="The warrior cat catches a golden fish beside a white cat on the village dock" width="960" height="720" loading="lazy">
+        <span>A little time for fishing</span>
       </a>
     </div>
 
@@ -65,5 +86,20 @@
       <a class="releases-link" href="https://github.com/wurmmatthias/64-project-public-builds/releases">All builds &amp; release notes</a>
     </section>
   </main>
+  <dialog class="lightbox" aria-label="Screenshot viewer" aria-describedby="screenshot-caption">
+    <div class="lightbox-toolbar">
+      <p id="screenshot-position" class="muted" aria-live="polite"></p>
+      <button type="button" class="lightbox-close" aria-label="Close screenshot viewer" autofocus>Close <span aria-hidden="true">×</span></button>
+    </div>
+    <figure>
+      <img id="screenshot-image" alt="">
+      <figcaption id="screenshot-caption"></figcaption>
+    </figure>
+    <div class="lightbox-navigation">
+      <button type="button" class="lightbox-previous" aria-label="Previous screenshot">← Previous</button>
+      <span class="muted lightbox-hint">← → to browse · Esc to close</span>
+      <button type="button" class="lightbox-next" aria-label="Next screenshot">Next →</button>
+    </div>
+  </dialog>
 </body>
 </html>

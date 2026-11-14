@@ -8,16 +8,31 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; }
+body.viewer-open { overflow: hidden; }
 a { color: #edc56e; text-underline-offset: 4px; }
-a:focus-visible { outline: 2px solid #edc56e; outline-offset: 5px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #edc56e; outline-offset: 5px; }
+button { font: inherit; cursor: pointer; }
 img { display: block; width: 100%; height: auto; }
 h1, h2, h3, p { margin: 0; }
-.page { width: min(100% - 48px, 920px); margin: 0 auto; padding: 32px 0 56px; text-align: center; }
-.logo { width: min(100%, 480px); margin: 0 auto 24px; line-height: 0; }
-.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.gallery a { display: block; border: 1px solid #435c4b; border-radius: 4px; overflow: hidden; }
-.gallery a:hover { border-color: #edc56e; }
+.hero { position: relative; isolation: isolate; display: grid; place-items: center; min-height: clamp(280px, 32vw, 420px); padding: 48px 24px 72px; }
+.hero::before { content: ""; position: absolute; z-index: -2; inset: 0; background: url("assets/mushroom-island.png") center 42% / cover no-repeat; image-rendering: pixelated; }
+.hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, #14272020 0%, #14272040 40%, #142720c4 75%, #142720 100%); }
+.page { width: min(100% - 48px, 1000px); margin: 0 auto; padding: 0 0 56px; text-align: center; }
+.logo { width: min(100%, 560px); margin: 0 auto; line-height: 0; filter: drop-shadow(0 8px 18px #071710b3); }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gallery a { display: block; background: #192e25; border: 1px solid #435c4b; border-radius: 6px; overflow: hidden; text-decoration: none; color: #f0e8d4; }
+.gallery a:hover { border-color: #edc56e; color: #edc56e; }
 .gallery img { aspect-ratio: 4 / 3; object-fit: contain; image-rendering: pixelated; }
+.gallery a span { display: block; padding: 8px 10px; font-size: 13px; }
+.lightbox { width: min(100% - 32px, 1100px); max-width: none; max-height: calc(100dvh - 32px); padding: 16px; color: #f0e8d4; background: #142720; border: 1px solid #435c4b; border-radius: 8px; box-shadow: 0 24px 80px #0008; }
+.lightbox::backdrop { background: #050d0be8; }
+.lightbox-toolbar, .lightbox-navigation { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lightbox button { min-height: 44px; padding: 7px 14px; color: #f0e8d4; background: #223c2f; border: 1px solid #435c4b; border-radius: 4px; font-size: 14px; }
+.lightbox button:hover { border-color: #edc56e; color: #edc56e; }
+.lightbox-close span { margin-left: 8px; font-size: 20px; }
+.lightbox figure { margin: 12px 0; text-align: center; }
+.lightbox figure img { width: 100%; height: auto; max-height: min(65dvh, 720px); object-fit: contain; image-rendering: pixelated; background: #0b1913; }
+.lightbox figcaption { padding-top: 12px; font-size: 15px; }
 .description { max-width: 690px; margin: 28px auto 0; font-size: 16px; }
 .muted { color: #b4c2b3; font-size: 13px; }
 .description .muted { margin-top: 12px; }
@@ -29,10 +44,13 @@ h1, h2, h3, p { margin: 0; }
 .install-note strong { color: #f0e8d4; font-weight: 400; }
 .releases-link { display: inline-block; margin-top: 16px; font-size: 13px; }
 @media (max-width: 600px) {
-  .page { width: calc(100% - 32px); padding-top: 20px; }
-  .logo { width: min(100%, 360px); margin-bottom: 20px; }
+  .page { width: calc(100% - 32px); }
+  .hero { min-height: 260px; padding: 40px 24px 64px; }
+  .logo { width: min(100%, 400px); }
   .gallery { grid-template-columns: 1fr; gap: 12px; }
   .description { margin-top: 24px; font-size: 15px; }
+  .lightbox { padding: 12px; }
+  .lightbox-hint { display: none; }
 }
 
 .platform-builds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
@@ -43,4 +61,7 @@ h1, h2, h3, p { margin: 0; }
 .intel-status { margin-top: 18px; }
 @media (max-width: 800px) {
   .platform-builds { grid-template-columns: 1fr; }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
