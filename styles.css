@@ -20,8 +20,10 @@ h1, h2, h3, p { margin: 0; }
 .page { width: min(100% - 48px, 1000px); margin: 0 auto; padding: 0 0 56px; text-align: center; }
 .logo { width: min(100%, 560px); margin: 0 auto; line-height: 0; filter: drop-shadow(0 8px 18px #071710b3); }
 .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.gallery a { display: block; background: #192e25; border: 1px solid #435c4b; border-radius: 6px; overflow: hidden; text-decoration: none; color: #f0e8d4; }
-.gallery a:hover { border-color: #edc56e; color: #edc56e; }
+/* The game's 64 × 12 button sprite uses fixed three-pixel corner slices. */
+.gallery a, .lightbox figure img { border: 6px solid transparent; border-image: url("assets/ui-button-frame.svg") 3 / 6px / 0 stretch; }
+.gallery a { display: block; background: #22413f; box-shadow: 0 2px 0 #08171ab4; text-decoration: none; color: #f0e8d4; }
+.gallery a:hover, .gallery a:focus-visible { border-image-source: url("assets/ui-button-focus-frame.svg"); color: #edc56e; }
 .gallery img { aspect-ratio: 4 / 3; object-fit: contain; image-rendering: pixelated; }
 .gallery a span { display: block; padding: 8px 10px; font-size: 13px; }
 .lightbox { width: min(100% - 32px, 1100px); max-width: none; max-height: calc(100dvh - 32px); padding: 16px; color: #f0e8d4; background: #142720; border: 1px solid #435c4b; border-radius: 8px; box-shadow: 0 24px 80px #0008; }
@@ -37,7 +39,7 @@ h1, h2, h3, p { margin: 0; }
 .muted { color: #b4c2b3; font-size: 13px; }
 .description .muted { margin-top: 12px; }
 .builds { margin-top: 30px; padding-top: 25px; border-top: 1px solid #394c40; }
-.builds h2 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+.builds h2 { width: min(100%, 460px); margin: 0 auto 8px; line-height: 0; }
 .download-button { display: inline-block; max-width: 100%; margin-top: 18px; padding: 11px 24px; background: #edc56e; color: #142720; border-radius: 4px; font-size: 15px; font-weight: 700; text-decoration: none; }
 .download-button:hover { background: #ffda8b; }
 .install-note { margin-top: 16px; font-size: 13px; color: #b4c2b3; }
@@ -55,6 +57,7 @@ h1, h2, h3, p { margin: 0; }
 
 .platform-builds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
 .platform-build { padding: 20px 14px; border: 1px solid #435c4b; border-radius: 4px; }
+.platform-logo { width: 96px; height: 96px; object-fit: contain; margin: 0 auto 12px; }
 .platform-build h3 { margin-bottom: 10px; font-size: 20px; }
 .builds > .platform-build { margin-top: 16px; }
 .platform-build .download-button { padding: 10px 14px; }
