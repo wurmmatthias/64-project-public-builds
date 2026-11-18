@@ -18,7 +18,7 @@ h1, h2, h3, p { margin: 0; }
 .hero::before { content: ""; position: absolute; z-index: -2; inset: 0; background: url("assets/mushroom-island.png") center 42% / cover no-repeat; image-rendering: pixelated; }
 .hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, #14272020 0%, #14272040 40%, #142720c4 75%, #142720 100%); }
 .page { width: min(100% - 48px, 1000px); margin: 0 auto; padding: 0 0 56px; text-align: center; }
-.logo { width: min(100%, 560px); margin: 0 auto; line-height: 0; filter: drop-shadow(0 8px 18px #071710b3); }
+.logo { width: min(100%, 640px); margin: 0 auto; line-height: 0; filter: drop-shadow(0 8px 18px #071710b3); }
 .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 /* The game's 64 × 12 button sprite uses fixed three-pixel corner slices. */
 .gallery a, .lightbox figure img { border: 6px solid transparent; border-image: url("assets/ui-button-frame.svg") 3 / 6px / 0 stretch; }
@@ -55,15 +55,50 @@ h1, h2, h3, p { margin: 0; }
   .lightbox-hint { display: none; }
 }
 
-.platform-builds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
-.platform-build { padding: 20px 14px; border: 1px solid #435c4b; border-radius: 4px; }
+.platform-builds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 32px 10px 0; }
+/* The sheet and its two rolled ends stay flexible as install notes wrap. */
+.platform-build {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: 34px 22px 38px;
+  color: #3e2b1c;
+  background:
+    radial-gradient(ellipse at 15% 24%, #fff9df80, transparent 48%),
+    radial-gradient(ellipse at 92% 76%, #98633225, transparent 54%),
+    repeating-linear-gradient(4deg, #9a6d3810 0 1px, transparent 1px 7px),
+    linear-gradient(90deg, #bc8b4e, #e3c48b 5%, #f0dbac 18%, #edd3a0 80%, #dab77a 96%, #b78648);
+  border: 1px solid #b78b50;
+  border-radius: 4px 7px 6px 3px;
+  box-shadow: inset 0 0 24px #9a693329, 0 12px 22px #06151055;
+  overflow-wrap: anywhere;
+}
+.platform-build::before, .platform-build::after {
+  content: "";
+  position: absolute;
+  left: -11px;
+  right: -11px;
+  height: 25px;
+  border: 1px solid #9e713c;
+  border-radius: 14px / 10px;
+  background:
+    radial-gradient(ellipse 5px 10px at 7px 50%, #684322 24%, #c89c5e 43%, #f4dfaf 62%, transparent 76%),
+    radial-gradient(ellipse 5px 10px at calc(100% - 7px) 50%, #684322 24%, #c89c5e 43%, #f4dfaf 62%, transparent 76%),
+    linear-gradient(180deg, #aa793e, #e8cc94 23%, #fae9be 44%, #dbb577 76%, #a87538);
+}
+.platform-build::before { top: -12px; box-shadow: 0 5px 5px #67421e33; }
+.platform-build::after { bottom: -12px; transform: rotate(180deg); box-shadow: 0 -4px 5px #67421e25; }
 .platform-logo { width: 96px; height: 96px; object-fit: contain; margin: 0 auto 12px; }
-.platform-build h3 { margin-bottom: 10px; font-size: 20px; }
-.builds > .platform-build { margin-top: 16px; }
-.platform-build .download-button { padding: 10px 14px; }
+.platform-build h3 { margin-bottom: 10px; color: #49301b; font-family: Georgia, "Times New Roman", serif; font-size: 23px; }
+.platform-build .muted, .platform-build .install-note { color: #63482e; }
+.platform-build .install-note strong { color: #3e2b1c; font-weight: 700; }
+.builds > .platform-build { margin: 40px 10px 12px; }
+.platform-build .download-button { padding: 10px 14px; color: #fff0c9; background: #214c43; border: 1px solid #173b33; box-shadow: 0 3px 0 #12342c; }
+.platform-build .download-button:hover { background: #2c6053; }
+.platform-build .download-button:focus-visible { outline-color: #214c43; }
 .intel-status { margin-top: 18px; }
 @media (max-width: 800px) {
-  .platform-builds { grid-template-columns: 1fr; }
+  .platform-builds { grid-template-columns: 1fr; gap: 38px; }
 }
 @media (min-width: 601px) and (max-width: 800px) {
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
