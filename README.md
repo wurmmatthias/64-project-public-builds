@@ -13,7 +13,7 @@ Download the archive matching your computer from Releases and extract all files:
 
 | Platform | Archive suffix | Start |
 | --- | --- | --- |
-| Windows x64 | `windows-x64.zip` | `island64.exe` |
+| Windows x64 | `windows-x64.zip` | `whiskerwild.exe` |
 | Linux x64 | `linux-x64.tar.gz` | `./play.sh` in a terminal |
 | Mac Apple Silicon | `macos-arm64.tar.gz` | `Play.command` |
 | Mac Intel | `macos-x64.tar.gz` | `Play.command` |
