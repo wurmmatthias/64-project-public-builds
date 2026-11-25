@@ -5,10 +5,11 @@ export const PLATFORMS = [
   { id: 'linux-x64', label: 'Linux', suffix: 'linux-x64.tar.gz' },
   { id: 'macos-arm64', label: 'Mac · Apple Silicon', suffix: 'macos-arm64.tar.gz' },
   { id: 'macos-x64', label: 'Mac · Intel', suffix: 'macos-x64.tar.gz' },
-  { id: 'rg35xx-pro-aarch64', label: 'RG35XX Pro', suffix: 'rg35xx-pro-aarch64.zip' }
+  { id: 'rg35xx-pro-aarch64', label: 'RG35XX Pro', suffix: 'rg35xx-pro-aarch64.zip' },
+  { id: 'android', label: 'Android', suffix: 'android.apk' }
 ];
 
-// Only offer matching runtime archives from our public repository.
+// Only offer matching build files from our public repository.
 export function platformAsset(release, platform = 'windows-x64') {
   const target = PLATFORMS.find(candidate => candidate.id === platform);
   if (!target || !/^v[0-9][A-Za-z0-9._-]*$/.test(release?.tag_name)) return undefined;

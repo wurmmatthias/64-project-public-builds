@@ -9,15 +9,16 @@ sword and bow, and make your cat your own.
 
 ## Play
 
-Download the archive matching your computer from Releases and extract all files:
+Choose the file for your platform from Releases. Extract desktop and RG35XX Pro archives before playing.
 
-| Platform | Archive suffix | Start |
+| Platform | File suffix | Start |
 | --- | --- | --- |
 | Windows x64 | `windows-x64.zip` | `whiskerwild.exe` |
 | Linux x64 | `linux-x64.tar.gz` | `./play.sh` in a terminal |
 | Mac Apple Silicon | `macos-arm64.tar.gz` | `Play.command` |
 | Mac Intel | `macos-x64.tar.gz` | `Play.command` |
 | RG35XX Pro (experimental) | `rg35xx-pro-aarch64.zip` | Copy `Whiskerwild.sh` and `whiskerwild/` into Ports |
+| Android (experimental) | `android.apk` | Open the APK on your Android device to install it |
 
 All builds include runtime assets and license notices. Desktop builds require OpenGL 3.3.
 Linux requires Ubuntu 22.04 or a compatible newer distribution with X11/XWayland
@@ -30,6 +31,9 @@ its SDL2/Mali and GLES 3.0 drivers (glibc 2.31 baseline). Copy the launcher and
 game folder into `Roms/PORTS`; open RA Game -> PORTS -> Whiskerwild. It also has a
 PortMaster launch path. Read INSTALL.txt. Testing on the physical handheld is
 still needed.
+
+The Android build supports ARM64 and x86-64 devices with Android 8.0+ and
+OpenGL ES 3.0. Gameplay uses a physical gamepad.
 
 This repository contains the public website and compiled releases. Game source
 code is maintained separately. See the license notices shipped with each build
